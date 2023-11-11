@@ -30,6 +30,7 @@ router.get("/", async (req, res) => {
 // Get one by id
 router.get("/:id", async (req, res) => {
     const {id} = req.params
+    console.log(id)
     try {
         const items = await pool.query("SELECT * FROM objectview where id = $1", [id])
         res.json(items.rows[0])

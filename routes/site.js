@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
         const types = (await pool.query("SELECT * FROM dontfindview")).rows
         let sql = types.map(({ type }) => type);
         
-        const items = await pool.query("SELECT * FROM siteview WHERE NOT type = ANY($1) LIMIT 30", [sql])
+        const items = await pool.query("SELECT * FROM siteview WHERE NOT type = ANY($1) LIMIT 36", [sql])
         res.json(items.rows)
     }catch(err){
         console.error(err.message)

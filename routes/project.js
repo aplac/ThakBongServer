@@ -7,6 +7,9 @@ router.get("/sql/:sql", async (req, res) => {
     const {sql} = req.params
     try {
         const items = await pool.query(sql)
+        // if(Object.hasOwn(items[0], 'date')){
+        //     items = items.filter(v => v !== null);
+        // }
         res.json(items.rows)
     }catch(err){
         console.error(err.message)
